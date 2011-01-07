@@ -4,6 +4,8 @@ require 'spec_helper.rb'
 #Editor wants to create stories that will be displayed on the homepage
 
 describe "manage news" do
+  include RSpec::Rails::RequestExampleGroup
+  
   describe "Homepage" do
     
     before do

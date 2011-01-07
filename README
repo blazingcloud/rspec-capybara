@@ -13,21 +13,9 @@ $ rake routes
 (in /Users/rachelmyers/src/rspec_capybara)
 root  /(.:format) {:controller=>"stories", :action=>"index"}
 
+in order to access routes (e.g. root_url) from specs in a custom integration directory, we needed to add the following line inside the describe block in spec/integration/manage_news_spec.rb
 
-in order to access routes (e.g. root_url) from integration specs, we needed the following configuration, which we defined in support/integration/integration_example_group.rb
+include RSpec::Rails::RequestExampleGroup
 
-require 'action_dispatch'
-
-module RSpec::Rails
-  module IntegrationExampleGroup
-    include ActionDispatch::Integration::Runner
-  	def app
-       ::Rails.application
-   	end
- 
-  	RSpec.configure do |c|
-    	c.include self, :example_group => { :file_path => /\bspec\/integration\// }
-  	end
-  end
-end
+see: http://www.ruby-forum.com/topic/686833#969342
 
