@@ -15,14 +15,14 @@ describe "manage news" do
     end
     
     it "has a link to create a story" do
-      click_link('New Story')
+      click_link 'New Story'
       current_path.should == new_story_path
-      fill_in('Title', :with => 'Headline News')
-      fill_in('Content', :with => 'Great story')
-      click_button('Create')
+      fill_in 'Title', :with => 'Headline News' 
+      fill_in 'Content', :with => 'Great story'
+      click_button 'Create'
       current_path.should == root_path
-      page.should have_content('Headline News')
-      page.should have_no_content('Great story')
+      page.should have_content 'Headline News'
+      page.should have_no_content 'Great story'
     end
     
     it "displays a list of stories"
