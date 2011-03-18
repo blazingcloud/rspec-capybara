@@ -7,16 +7,16 @@ describe "manage news" do
   describe "Homepage" do
     
     before do
-      visit root_path
+      visit '/'
     end
     
     it "has a 'New Story' link" do
-      find_link('New Story').visible?
+      find_link('New Story').should be_visible
     end
     
     it "has a link to create a story" do
       click_link 'New Story'
-      current_path.should == new_story_path
+      current_path.should == '/stories/new'
       fill_in 'Title', :with => 'Headline News' 
       fill_in 'Content', :with => 'Great story'
       click_button 'Create'
@@ -25,6 +25,7 @@ describe "manage news" do
       page.should have_no_content 'Great story'
     end
     
-    it "displays a list of stories"
+    it "displays a list of stories" 
+
   end
 end
